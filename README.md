@@ -1,112 +1,176 @@
 # atividadejava
 ```Java
-public class Pessoa{
-    private String Nome;
-    private String EstadoCivil;
-    private String Data;
-    private String CPF;
-    private String RG;
-    private int Idade;
+class Pessoa {
+    private String nome;
+    private int idade;
 
-    String getNome(){
-        return Nome;
+    public Pessoa(String nome, int idade) {
+        this.nome = nome;
+        this.idade = idade;
     }
 
-    int getIdade(){
-        return Idade;
+    public String getNome() {
+        return nome;
     }
 
-    String getEstadoCivil(){
-        return EstadoCivil;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    String getData(){
-        return Data;
+    public int getIdade() {
+        return idade;
     }
 
-    String getCPF(){
-        return CPF;
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
 
-    String getRG(){
-        return RG;
-    }
-
-    public String setNome(String Nome){
-        return this.Nome = Nome;
-    }
-
-    public int setIdade(int Idade){
-        return this.Idade = Idade;
-    }
-
-    public String setEstadoCivil(String EstadoCivil){
-        return this.EstadoCivil = EstadoCivil;
-    }
-
-    public String setData(String Data){
-        return this.Data = Data;
-    }
-    public String setCPF(String CPF){
-        return this.CPF = CPF;
-    }
-
-    public String setRG(String RG){
-        return this.RG = RG;
-    }
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author carli
- */
-public class agenda {
-    private String Agenda;
- 
-    
-    String getAgenda(){
-    return Agenda;
-    }
-    
-    public String setAgenda(String Agenda){
-    return this.Agenda = Agenda;
+    @Override
+    public String toString() {
+        return "Nome: " + nome + ", Idade: " + idade;
     }
 }
 
+class Funcionario extends Pessoa {
+    private double salario;
+    private String cargo;
+    private String departamento;
 
+    public Funcionario(String nome, int idade, double salario, String cargo, String departamento) {
+        super(nome, idade);
+        this.salario = salario;
+        this.cargo = cargo;
+        this.departamento = departamento;
+    }
 
+    public double getSalario() {
+        return salario;
+    }
 
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
 
+    public String getCargo() {
+        return cargo;
+    }
 
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Salário: " + salario + ", Cargo: " + cargo + ", Departamento: " + departamento;
+    }
 }
 
+class Estudante extends Pessoa {
+    private String curso;
+    private int matricula;
+    private int ano;
 
-public class Principal {
-  public static void main(String[] args) {
-    Pessoa meusDados = new Pessoa();
-    agenda telefone = new agenda();
+    public Estudante(String nome, int idade, String curso, int matricula, int ano) {
+        super(nome, idade);
+        this.curso = curso;
+        this.matricula = matricula;
+        this.ano = ano;
+    }
 
-    meusDados.setNome("Carlos");
-    meusDados.setIdade(20);
-    meusDados.setEstadoCivil("Solteiro");
-    meusDados.setData("19/02/2003");
-    meusDados.setCPF("871.969.680-93");
-    meusDados.setRG("121908288/99");
-    telefone.setAgenda("996156506");
-    
+    public String getCurso() {
+        return curso;
+    }
 
-    System.out.println("Nome: " + meusDados.getNome());
-    System.out.println("Idade: " + meusDados.getIdade() + " Anos ");
-    System.out.println("Estados " + meusDados.getEstadoCivil());
-    System.out.println("Data de Nascimento: " + meusDados.getData());
-    System .out.println("Telefone" + telefone.getAgenda());
-    System.out.println("CPF: " + meusDados.getCPF());
-    System.out.println("RG: " + meusDados.getRG());
-  }  
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Curso: " + curso + ", Matrícula: " + matricula + ", Ano: " + ano;
+    }
 }
+
+class Agenda {
+    private ArrayList<Pessoa> contatos = new ArrayList<>();
+
+    public void adicionarContato(Pessoa pessoa) {
+        contatos.add(pessoa);
+    }
+
+    public void buscarFuncionariosPorDepartamento(String departamento) {
+        for (Pessoa contato : contatos) {
+            if (contato instanceof Funcionario) {
+                Funcionario funcionario = (Funcionario) contato;
+                if (funcionario.getDepartamento().equals(departamento)) {
+                    System.out.println(funcionario);
+                }
+            }
+        }
+    }
+
+    public double calcularSalarioMedioFuncionarios() {
+        double somaSalarios = 0;
+        int contadorFuncionarios = 0;
+        for (Pessoa contato : contatos) {
+            if (contato instanceof Funcionario) {
+                Funcionario funcionario = (Funcionario) contato;
+                somaSalarios += funcionario.getSalario();
+                contadorFuncionarios++;
+            }
+        }
+        return contadorFuncionarios > 0 ? somaSalarios / contadorFuncionarios : 0;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Agenda agenda = new Agenda();
+
+        Pessoa pessoa = new Pessoa("João", 30);
+        Funcionario funcionario = new Funcionario("Maria", 35, 5000, "Gerente", "RH");
+        Estudante estudante = new Estudante("Lucas", 20, "Engenharia", 12345, 2023);
+
+        agenda.adicionarContato(pessoa);
+        agenda.adicionarContato(funcionario);
+        agenda.adicionarContato(estudante);
+
+        System.out.println("Contatos na Agenda:");
+        for (Pessoa contato : agenda.getContatos()) {
+            System.out.println(contato);
+        }
+
+        System.out.println("\nFuncionários do Departamento 'RH':");
+        agenda.buscarFuncionariosPorDepartamento("RH");
+
+        double salarioMedio = agenda.calcularSalarioMedioFuncionarios();
+        System.out.println("\nSalário Médio dos Funcionários: " + salarioMedio);
+    }
+}
+
 
 ```
