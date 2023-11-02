@@ -1,175 +1,239 @@
 # atividadejava
 ```Java
-class Pessoa {
-    private String nome;
-    private int idade;
+//class Dados
 
-    public Pessoa(String nome, int idade) {
-        this.nome = nome;
-        this.idade = idade;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author carli
+ */
+public class Dados {
+    private String Nome;
+    private int Idade;
+
+    String getNome(){
+    return Nome;
     }
-
-    public String getNome() {
-        return nome;
+    
+    int getIdade(){
+        return Idade;
     }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+    
+    public String setNome(String Nome){
+        return this.Nome = Nome;
     }
-
-    public int getIdade() {
-        return idade;
+    
+    public int setIdade(int Idade){
+    return this.Idade =Idade;
     }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
+    
     }
+    
 
-    @Override
-    public String toString() {
-        return "Nome: " + nome + ", Idade: " + idade;
+//class agenda
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author carli
+ */
+public class agenda {
+    private String Agenda;
+ 
+    
+    String getAgenda(){
+    return Agenda;
+    }
+    
+    public String setAgenda(String Agenda){
+    return this.Agenda = Agenda;
     }
 }
 
-class Funcionario extends Pessoa {
-    private double salario;
+
+//estudante
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author carli
+ */
+public class estudante extends pessoa{
+    private String Curso;
+    private int ano;
+    private int  Matricula;
+    
+    public estudante(String Nome, String Curso, int ano, int Matricula){
+        super(Nome);
+        this.Curso = Curso;
+        this.ano = ano;
+        this.Matricula = Matricula;
+    }
+    
+    @Override
+public String toString() {
+    
+   
+return "funcionarios [nome=" + this.getNome() + ", Curso=" + Curso + ", Ano=" + ano + ", Matricula=" + Matricula + "]";
+}
+    
+    String getCurso(){
+    return Curso;
+    }
+    int getano(){
+    return ano;
+    }
+    int getMatricula(){
+    return Matricula;
+    }
+    
+   public String setcurso(String Curso){
+   return this.Curso = Curso;
+   }
+   
+   public int setano(int ano){
+   return this.ano = ano;
+   }
+   
+   public int setMatricula(int Matricula){
+   return this.Matricula = Matricula;
+   }
+   
+}
+//funcionario
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+/**
+ *
+ * @author carli
+ */
+public class funcionarios extends pessoa{
     private String cargo;
     private String departamento;
-
-    public Funcionario(String nome, int idade, double salario, String cargo, String departamento) {
-        super(nome, idade);
-        this.salario = salario;
+    private  int Salario;
+     
+    public funcionarios(String Nome, String cargo, String departamento, int Salario) {
+        super(Nome); // Chama o construtor da classe Pessoa com o nome
         this.cargo = cargo;
         this.departamento = departamento;
+        this.Salario = Salario;
     }
-
-    public double getSalario() {
-        return salario;
-    }
-
-    public void setSalario(double salario) {
-        this.salario = salario;
-    }
-
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-
-    public String getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString() + ", Salário: " + salario + ", Cargo: " + cargo + ", Departamento: " + departamento;
-    }
+    
+ @Override
+public String toString() {
+    
+   
+return "funcionarios [nome=" + this.getNome() + ", cargo=" + cargo + ", departamento=" + departamento + ", Salario=" + Salario + "]";
 }
 
-class Estudante extends Pessoa {
-    private String curso;
-    private int matricula;
-    private int ano;
+    
 
-    public Estudante(String nome, int idade, String curso, int matricula, int ano) {
-        super(nome, idade);
-        this.curso = curso;
-        this.matricula = matricula;
-        this.ano = ano;
+
+    
+    String getcargo(){
+    return cargo;
     }
-
-    public String getCurso() {
-        return curso;
+    
+    public String setcargo(String cargo){
+    return this.cargo = cargo;
     }
-
-    public void setCurso(String curso) {
-        this.curso = curso;
+    
+    String getdepartamento(){
+    return departamento;
     }
-
-    public int getMatricula() {
-        return matricula;
+    
+    public String setdepartamento(String departamento){
+    return this.departamento = departamento;
     }
-
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
+    
+    int getSalario(){
+    return Salario;
     }
-
-    public int getAno() {
-        return ano;
+    
+    public int setSalario(int Salario){
+    return this.Salario = Salario;
     }
+   
+//class pessoa
 
-    public void setAno(int ano) {
-        this.ano = ano;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author carli
+ */
+public class pessoa{
+    private String Nome;
+    
+  public pessoa(String Nome){
+  this.Nome = Nome;
+  }
+    String getNome(){
+    return Nome;
     }
-
-    @Override
-    public String toString() {
-        return super.toString() + ", Curso: " + curso + ", Matrícula: " + matricula + ", Ano: " + ano;
-    }
-}
-
-class Agenda {
-    private ArrayList<Pessoa> contatos = new ArrayList<>();
-
-    public void adicionarContato(Pessoa pessoa) {
-        contatos.add(pessoa);
-    }
-
-    public void buscarFuncionariosPorDepartamento(String departamento) {
-        for (Pessoa contato : contatos) {
-            if (contato instanceof Funcionario) {
-                Funcionario funcionario = (Funcionario) contato;
-                if (funcionario.getDepartamento().equals(departamento)) {
-                    System.out.println(funcionario);
-                }
-            }
-        }
-    }
-
-    public double calcularSalarioMedioFuncionarios() {
-        double somaSalarios = 0;
-        int contadorFuncionarios = 0;
-        for (Pessoa contato : contatos) {
-            if (contato instanceof Funcionario) {
-                Funcionario funcionario = (Funcionario) contato;
-                somaSalarios += funcionario.getSalario();
-                contadorFuncionarios++;
-            }
-        }
-        return contadorFuncionarios > 0 ? somaSalarios / contadorFuncionarios : 0;
+    
+    public String setNome(String Nome){
+    return this.Nome = Nome;
     }
 }
+//principal
 
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author carli
+ */
 public class Principal {
     public static void main(String[] args) {
-        Agenda agenda = new Agenda();
+        Dados meusdados = new Dados();
+        agenda telefone = new agenda();
+        estudante estudantes = new estudante("Carlos Hardman", "TI", 20, 2023);
+        funcionarios funcionario = new funcionarios("Carlos Hardman","Ajudante","sala A",1000);
+        
 
-        Pessoa pessoa = new Pessoa("João", 30);
-        Funcionario funcionario = new Funcionario("Maria", 35, 5000, "Gerente", "RH");
-        Estudante estudante = new Estudante("Lucas", 20, "Engenharia", 12345, 2023);
+        
+        meusdados.setNome("Carlos Hardman");
+        meusdados.setIdade(20);
+        telefone.setAgenda("996156506");
+        
+        System.out.println("Nome: " + meusdados.getNome());
+        System.out.println("Idade: " + meusdados.getIdade());
+        System .out.println("Telefone" + telefone.getAgenda());
+         System.out.println("Nome: " + estudantes.getNome());
+        System.out.println("curso: " + estudantes.getCurso());
+        System.out.println("Matricula: " + estudantes.getMatricula());
 
-        agenda.adicionarContato(pessoa);
-        agenda.adicionarContato(funcionario);
-        agenda.adicionarContato(estudante);
 
-        System.out.println("Contatos na Agenda:");
-        for (Pessoa contato : agenda.getContatos()) {
-            System.out.println(contato);
-        }
-
-        System.out.println("\nFuncionários do Departamento 'RH':");
-        agenda.buscarFuncionariosPorDepartamento("RH");
-
-        double salarioMedio = agenda.calcularSalarioMedioFuncionarios();
-        System.out.println("\nSalário Médio dos Funcionários: " + salarioMedio);
     }
+}
+
+
+    
+    
+
+   
 }
 
 
